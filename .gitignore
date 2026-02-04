@@ -48,6 +48,5 @@ bld/
 !.gitattributes
 !/addons/
 /addons/fmod
-/addons/csharp_gdextension_bindgen/*
-!/addons/csharp_gdextension_bindgen/csharp_gdextension_bindgen.gd
+!/addons/csharp_gdextension_bindgen/*
 !/addons/fmod_csharp_bind/*
