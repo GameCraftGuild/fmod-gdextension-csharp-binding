@@ -1,4 +1,5 @@
 ## GDExtension to C# binding generator (v0.3.1)
+## Adjusted by Mitch Miller
 ##
 ## The C# classes generated are not attached scripts, but rather wrappers that
 ## forward execution to a GodotObject using dynamic calls.
@@ -88,7 +89,7 @@ static func generate_csharp_script(
 
 	# Engine object used for calling engine methods
 	if not parent_class_is_extension:
-		regions.append("// Engine object used for calling engine methods\nprotected %s _object;" % parent_class)
+		regions.append("// Engine object used for calling engine methods\nprotected %s _object;" % _pascal_to_pascal_case(parent_class))
 
 	# Constructors
 	var ctor_fmt
@@ -125,7 +126,7 @@ static func generate_csharp_script(
 		"""
 	var ctor = ctor_fmt.dedent().format({
 		cls_name = cls_name,
-		engine_class = engine_class,
+		engine_class = _pascal_to_pascal_case(engine_class),
 	}).strip_edges()
 	regions.append(ctor)
 
@@ -135,7 +136,7 @@ static func generate_csharp_script(
 		public static explicit operator {cls_name}(Variant variant) => variant.AsGodotObject() != null ? new(variant) : null;
 	""".dedent().format({
 		cls_name = cls_name,
-		engine_class = engine_class,
+		engine_class = _pascal_to_pascal_case(engine_class),
 	}).strip_edges()
 	regions.append(casts)
 
@@ -588,7 +589,7 @@ static func _get_property_type(cls_name: StringName, property: Dictionary) -> St
 		TYPE_RID:
 			return "Godot.Rid"
 		TYPE_OBJECT:
-			if property["class_name"] and property["class_name"] != "Object":
+			if property["class_name"]:
 				return _pascal_to_pascal_case(_get_class_from_class_name(property["class_name"]))
 			else:
 				return "GodotObject"
@@ -730,7 +731,7 @@ static func _generate_strings_class(cls_name: StringName, string_name_type: Stri
 	""".dedent().format({
 		lines = "\n".join(lines).indent("\t"),
 		maybe_new = "new " if _is_extension_class(parent_class) else "",
-		parent_class = parent_class,
+		parent_class = _pascal_to_pascal_case(parent_class),
 		strings_class = StringNameTypeName[string_name_type],
 	}).strip_edges()
 
