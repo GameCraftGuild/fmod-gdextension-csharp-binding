@@ -1,5 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
+android/
 .nomedia
 
 # Godot-specific ignores
@@ -14,3 +15,39 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# C# / .NET
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+bin/
+obj/
+.vs/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Rider
+.idea/
+
+# Specific to Repo
+/*
+/*/
+!.gitignore
+!.gitattributes
+!/addons/
+/addons/fmod
+/addons/csharp_gdextension_bindgen/*
+!/addons/csharp_gdextension_bindgen/csharp_gdextension_bindgen.gd
+!/addons/fmod_csharp_bind/*
