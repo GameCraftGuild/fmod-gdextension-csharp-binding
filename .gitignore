@@ -46,6 +46,7 @@ bld/
 /*/
 !.gitignore
 !.gitattributes
+!/.submodules/
 !/addons/
 /addons/fmod
 !/addons/csharp_gdextension_bindgen/*

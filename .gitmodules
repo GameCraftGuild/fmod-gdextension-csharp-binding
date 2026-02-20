@@ -1,0 +1,3 @@
+[submodule ".submodules/CSharp-Wrapper-Generator-for-GDExtension"]
+	path = .submodules/CSharp-Wrapper-Generator-for-GDExtension
+	url = git@github.com:GameCraftGuild/CSharp-Wrapper-Generator-for-GDExtension.git
